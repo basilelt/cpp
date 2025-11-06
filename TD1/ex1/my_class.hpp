@@ -3,8 +3,6 @@
 
 #include <string>
 
-using namespace std;
-
 class My_class
 {
 public:
@@ -14,7 +12,7 @@ public:
     void print_my_element() const;
 
 private:
-    string str;
+    std::string str;
 };
 
 #endif

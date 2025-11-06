@@ -2,9 +2,8 @@
 #define PRINT_STRING_H
 
 #include <iostream>
+#include <string>
 
-using namespace std;
-
-void print_string(const string &str);
+void print_string(const std::string &str);
 
 #endif
