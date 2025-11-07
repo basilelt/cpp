@@ -33,7 +33,7 @@ public:
     virtual void setRe(double);
     virtual void setIm(double);
 
-    virtual std::ostream& printOn(std::ostream&) const;
+    virtual std::ostream &printOn(std::ostream &) const;
 
 private:
     double re, im;
