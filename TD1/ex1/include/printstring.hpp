@@ -1,5 +1,5 @@
 #ifndef PRINTSTRING_H
-#define PRINT_STRING_H
+#define PRINTSTRING_H
 
 #include <iostream>
 #include <string>
