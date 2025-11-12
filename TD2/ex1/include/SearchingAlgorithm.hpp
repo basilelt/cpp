@@ -11,8 +11,8 @@ public:
     virtual ~SearchingAlgorithm(); /* destructeur */
 
     /* fonction 'search' virtuelle pure (=0) */
-    // virtual int search(std::vector<int>, int) = 0;
-    virtual int search(std::vector<int>, int);
+    virtual int search(std::vector<int>, int) = 0;
+    // virtual int search(std::vector<int>, int); for testing
 
     virtual std::ostream &displaySearchResults(std::ostream &, int, int) const;
 

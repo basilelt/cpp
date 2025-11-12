@@ -18,6 +18,7 @@ SearchingAlgorithm::~SearchingAlgorithm()
 
 int SearchingAlgorithm::search(std::vector<int> v1, int target)
 {
+    /* Recherche linéaire pour tester */
     totalSearch++; /* Incrémente le nombre de recherches pour toutes instances de la classe */
     std::vector<int>::iterator it = v1.begin();
     for (; it != v1.end(); ++it)
