@@ -14,11 +14,13 @@ public:
     virtual int search(std::vector<int>, int) = 0;
 
     /* Override car ancêtre */
-    virtual std::ostream &PrintOn(std::ostream &os) const override;
+    virtual std::ostream &displaySearchResults(std::ostream&, int, int) const;
+
+    static unsigned int totalComparisons, totalSearch;
+    static double averageComparisons;
 
 private:
     unsigned int numberComparisons;
-    static unsigned int totalComparisons, totalSearch, averageComparisons;
 };
 
 #endif /* SearchingAlgorithm_hpp */
