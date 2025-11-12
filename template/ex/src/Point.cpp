@@ -53,7 +53,7 @@ void Point::setY(int _y)
     y = _y;
 }
 
-Void Point::translate(int dx, int dy)
+void Point::translate(int dx, int dy)
 {
     x += dx;
     y += dy;

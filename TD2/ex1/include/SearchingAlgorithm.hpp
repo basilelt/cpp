@@ -11,10 +11,13 @@ public:
     virtual ~SearchingAlgorithm(); /* destructeur */
 
     /* fonction 'search' virtuelle pure (=0) */
-    virtual int search(std::vector<int>, int) = 0;
+    // virtual int search(std::vector<int>, int) = 0;
+    virtual int search(std::vector<int>, int);
+
+    virtual std::ostream &displaySearchResults(std::ostream &, int, int) const;
 
     /* Override car ancêtre */
-    virtual std::ostream &displaySearchResults(std::ostream&, int, int) const;
+    virtual std::ostream &PrintOn(std::ostream &os) const override;
 
     static unsigned int totalComparisons, totalSearch;
     static double averageComparisons;

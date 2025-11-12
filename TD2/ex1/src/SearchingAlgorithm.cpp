@@ -1,6 +1,11 @@
 #include "SearchingAlgorithm.hpp"
 #include <iostream>
 
+// Static member definitions
+unsigned int SearchingAlgorithm::totalComparisons = 0;
+unsigned int SearchingAlgorithm::totalSearch = 0;
+double SearchingAlgorithm::averageComparisons = 0.0;
+
 /* Constructeur par défaut */
 SearchingAlgorithm::SearchingAlgorithm() : numberComparisons(0)
 {
@@ -11,14 +16,14 @@ SearchingAlgorithm::~SearchingAlgorithm()
 {
 }
 
-int SearchingAlgorithm::search(std::vector<int> v1, int element)
+int SearchingAlgorithm::search(std::vector<int> v1, int target)
 {
     totalSearch++; /* Incrémente le nombre de recherches pour toutes instances de la classe */
     std::vector<int>::iterator it = v1.begin();
     for (; it != v1.end(); ++it)
     {
         numberComparisons++; /* Incrémente le nombre de comparaisons pour cette instance */
-        if (*it == element)
+        if (*it == target)
         {
             return std::distance(v1.begin(), it);
         }
@@ -45,10 +50,16 @@ std::ostream &SearchingAlgorithm::displaySearchResults(std::ostream &os, int res
     // os << totalSearch;
 
     os << std::endl
-       << "Nombre total de comparaisons: ";
-    os << totalComparisons;
-    os << std::endl
-       << "Nombre moyen de comparaisons par recherche: ";
-    os << averageComparisons;
+       << "Nombre total de comparaisons: "
+       << totalComparisons
+       << std::endl
+       << "Nombre moyen de comparaisons par recherche: "
+       << averageComparisons;
+    return os;
+}
+
+/* Surcharge de l'opérateur d'affichage */
+std::ostream &SearchingAlgorithm::PrintOn(std::ostream &os) const
+{
     return os;
 }
