@@ -28,10 +28,27 @@ int SearchingAlgorithm::search(std::vector<int> v1, int element)
 
 std::ostream &SearchingAlgorithm::displaySearchResults(std::ostream &os, int results, int target) const
 {
+    if (results == -1)
+    {
+        os << "Element " << target << " non trouvé." << std::endl;
+    }
+    else
+    {
+        os << "Element " << target << " trouvé à l'indice " << results << ".";
+    }
 
     totalComparisons += numberComparisons; /* Incrémente le nombre total de comparaisons pour toutes instances de la classe */
     averageComparisons = totalComparisons / totalSearch;
-    os << std::endl << "Nombre total de comparaisons: ";
+    // os << std::endl << "Nombre de comparaisons pour cette recherche: ";
+    // os << numberComparisons;
+    // os << std::endl << "Nombre total de recherches: ";
+    // os << totalSearch;
+
+    os << std::endl
+       << "Nombre total de comparaisons: ";
     os << totalComparisons;
+    os << std::endl
+       << "Nombre moyen de comparaisons par recherche: ";
+    os << averageComparisons;
     return os;
 }
