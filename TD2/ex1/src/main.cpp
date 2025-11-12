@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Point.hpp"
+#include "SearchingAlgorithm.hpp"
 
 int main()
 {
