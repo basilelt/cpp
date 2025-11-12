@@ -3,5 +3,6 @@
 
 int main()
 {
+    SearchingAlgorithm sa;
     return 0;
 }
