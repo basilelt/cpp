@@ -22,7 +22,7 @@ public:
     static unsigned int totalComparisons, totalSearch;
     static double averageComparisons;
 
-private:
+protected:
     unsigned int numberComparisons;
 };
 
