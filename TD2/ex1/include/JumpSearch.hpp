@@ -7,7 +7,7 @@
 class JumpSearch : public SearchingAlgorithm
 {
 public:
-    virtual ~JumpSearch(); /* destructeur */
+    virtual ~JumpSearch() override; /* destructeur */
 
     /* fonction 'search' override */
     virtual int search(std::vector<int>, int) override;

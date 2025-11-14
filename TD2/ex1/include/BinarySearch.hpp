@@ -7,7 +7,7 @@
 class BinarySearch : public SearchingAlgorithm
 {
 public:
-    virtual ~BinarySearch(); /* destructeur */
+    virtual ~BinarySearch() override; /* destructeur */
 
     /* fonction 'search' override */
     virtual int search(std::vector<int>, int) override;

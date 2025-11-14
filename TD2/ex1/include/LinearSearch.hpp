@@ -7,7 +7,7 @@
 class LinearSearch : public SearchingAlgorithm
 {
 public:
-    virtual ~LinearSearch(); /* destructeur */
+    virtual ~LinearSearch() override; /* destructeur */
 
     /* fonction 'search' override */
     virtual int search(std::vector<int>, int) override;

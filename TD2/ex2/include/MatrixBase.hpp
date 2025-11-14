@@ -11,7 +11,7 @@ public:
     MatrixBase();                               /* constructeur par défaut */
     MatrixBase(std::vector<T>, size_t, size_t); /* constructeur avec paramètres */
     MatrixBase(const MatrixBase &);             /* constructeur de copie */
-    virtual ~MatrixBase();                      /* destructeur */
+    virtual ~MatrixBase() override;             /* destructeur */
 
     virtual T getElement(unsigned int, unsigned int) const;
     virtual int getRows() const;

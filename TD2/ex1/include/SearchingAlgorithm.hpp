@@ -7,8 +7,8 @@
 class SearchingAlgorithm : public Base
 {
 public:
-    SearchingAlgorithm();          /* constructeur par défaut */
-    virtual ~SearchingAlgorithm(); /* destructeur */
+    SearchingAlgorithm();                   /* constructeur par défaut */
+    virtual ~SearchingAlgorithm() override; /* destructeur */
 
     /* fonction 'search' virtuelle pure (=0) */
     virtual int search(std::vector<int>, int) = 0;
