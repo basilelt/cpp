@@ -9,19 +9,19 @@ int main()
     int target = 6;
 
     // Linear Search
-    std::cout << "Linear Search Results:" << std::endl;
+    std::cout << "Linear Search Results:";
     LinearSearch linear;
     int result_linear = linear.search(v1, target);
     linear.displaySearchResults(std::cout, result_linear, target);
 
     // Jump Search
-    std::cout << "Jump Search Results:" << std::endl;
+    std::cout << "Jump Search Results:" <<;
     JumpSearch jump;
     int result_jump = jump.search(v1, target);
     jump.displaySearchResults(std::cout, result_jump, target);
 
     // Binary Search
-    std::cout << "Binary Search Results:" << std::endl;
+    std::cout << "Binary Search Results:" <<;
     BinarySearch binary;
     int result_binary = binary.search(v1, target);
     binary.displaySearchResults(std::cout, result_binary, target);
