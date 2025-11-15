@@ -2,24 +2,31 @@
 #define MATRIXNUMERICAL_H
 
 #include "MatrixBase.hpp"
-#include <vector>
 
-class MatrixNumerical : public MatrixBase
+template <typename T>
+class MatrixNumerical : public MatrixBase<T>
 {
 public:
-    virtual ~MatrixNumerical() override;                      /* destructeur */
+    MatrixNumerical();                               /* constructeur par défaut */
+    MatrixNumerical(std::vector<T>, size_t, size_t); /* constructeur avec paramètres */
+    MatrixNumerical(const MatrixNumerical &);        /* constructeur de copie */
+    virtual ~MatrixNumerical() override;             /* destructeur */
 
-    virtual T getElement(unsigned int, unsigned int) const;
-    virtual int getRows() const;
-    virtual int getCols() const;
-    virtual void addElement(T, unsigned int, unsigned int);
+    // Operators
+    MatrixNumerical operator+(const MatrixNumerical &) const;
+    MatrixNumerical operator-(const MatrixNumerical &) const;
+    MatrixNumerical operator*(const MatrixNumerical &) const;
+    MatrixNumerical operator/(const MatrixNumerical &) const;
 
-protected:
-    std::vector<T> data;
-    T initialValue = T(); /* Valeur initiale des éléments du tableau */
+    // Functions
+    T getDeterminant() const;
+    MatrixNumerical getInverse() const;
+    static MatrixNumerical getIdentity(int size);
 
 private:
-    size_t rows, cols;
+    static MatrixNumerical getCoFactor(const MatrixNumerical &mat, int p, int q);
 };
 
-#endif /* MatrixBase_hpp */
+#endif /* MatrixNumerical_hpp */
+
+#include "MatrixNumerical.tpp"

@@ -1,5 +1,6 @@
 #include "MatrixBase.hpp"
 #include <iostream>
+#include <iomanip>
 
 /* Constructeur par défaut */
 /* Fait une matrice 2x2 avec des valeurs initiales */
@@ -31,9 +32,7 @@ template <typename T>
 T MatrixBase<T>::getElement(unsigned int row, unsigned int col) const
 {
     // rows, cols, row et col commencent à 1
-    // On est a row * (cols - 1) + col dans le vecteur
-    // -1 car l'indexation commence à 0
-    return data[(row * (cols - 1) + col) - 1];
+    return data[(row - 1) * cols + (col - 1)];
 }
 
 template <typename T>
@@ -51,7 +50,7 @@ int MatrixBase<T>::getCols() const
 template <typename T>
 void MatrixBase<T>::addElement(T element, unsigned int row, unsigned int col)
 {
-    data[(row * (cols - 1) + col) - 1] = element;
+    data[(row - 1) * cols + (col - 1)] = element;
 }
 
 template <typename T>
@@ -61,7 +60,7 @@ std::ostream &MatrixBase<T>::Display(std::ostream &os) const
     {
         for (size_t c = 0; c < cols; c++)
         {
-            os << setfill(' ') << setw(4) << getElement(r + 1, c + 1);
+            os << std::setfill(' ') << std::setw(4) << getElement(r + 1, c + 1);
         }
         os << std::endl;
     }
