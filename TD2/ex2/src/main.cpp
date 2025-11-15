@@ -58,5 +58,19 @@ int main()
     testMatrixNumerical<float>("float");
     testMatrixNumerical<double>("double");
 
+    // Test safety mechanism for constructor
+    std::cout << "Testing constructor safety mechanism:" << std::endl;
+    try
+    {
+        // Try to create a 2x2 matrix with only 3 elements (should fail)
+        std::vector<int> badData = {1, 2, 3};
+        MatrixNumerical<int> badMat(badData, 2, 2);
+        std::cout << "ERROR: Should have thrown an exception!" << std::endl;
+    }
+    catch (const std::invalid_argument &e)
+    {
+        std::cout << "SUCCESS: Caught expected exception: " << e.what() << std::endl;
+    }
+
     return 0;
 }

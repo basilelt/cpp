@@ -1,6 +1,7 @@
 #include "MatrixBase.hpp"
 #include <iostream>
 #include <iomanip>
+#include <stdexcept>
 
 /* Constructeur par défaut */
 /* Fait une matrice 2x2 avec des valeurs initiales */
@@ -13,6 +14,10 @@ MatrixBase<T>::MatrixBase() : MatrixBase(std::vector<T>(4, initialValue), 2, 2)
 template <typename T>
 MatrixBase<T>::MatrixBase(std::vector<T> _data, size_t _rows, size_t _cols) : data(_data), rows(_rows), cols(_cols)
 {
+    if (_data.size() != _rows * _cols)
+    {
+        throw std::invalid_argument("Vector size does not match matrix dimensions");
+    }
 }
 
 /* Constructeur de copie */
