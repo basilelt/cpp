@@ -1,5 +1,6 @@
 #include "BinarySearch.hpp"
 #include <iostream>
+#include <algorithm>
 
 /* Destructeur */
 BinarySearch::~BinarySearch()
@@ -10,6 +11,8 @@ int BinarySearch::search(std::vector<int> v1, int target)
 {
     /* Recherche binaire */
     totalSearch++; /* Incrémente le nombre de recherches pour toutes instances de la classe */
+
+    std::sort(v1.begin(), v1.end()); /* Trie le vecteur pour la recherche binaire */
 
     int left = 0;
     int right = v1.size() - 1;

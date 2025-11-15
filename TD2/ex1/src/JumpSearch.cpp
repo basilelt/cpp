@@ -17,6 +17,8 @@ int JumpSearch::search(std::vector<int> v1, int target)
     if (n == 0)
         return -1;
 
+    std::sort(v1.begin(), v1.end()); /* Trie le vecteur pour la recherche jump */
+
     int step = static_cast<int>(std::sqrt(n));
     int prev = 0;
 
