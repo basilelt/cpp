@@ -8,11 +8,11 @@ template <typename T>
 class MatrixBase : public Base
 {
 public:
-    MatrixBase();                                         /* constructeur par défaut */
-    MatrixBase(std::vector<std::vector<T>>);              /* constructeur avec paramètres */
-    MatrixBase(std::vector<T>, size_t, size_t);           /* constructeur avec paramètres 1D */
-    MatrixBase(const MatrixBase &);                       /* constructeur de copie */
-    virtual ~MatrixBase() override;                        /* destructeur */
+    MatrixBase();                               /* constructeur par défaut */
+    MatrixBase(std::vector<std::vector<T>>);    /* constructeur avec paramètres */
+    MatrixBase(std::vector<T>, size_t, size_t); /* constructeur avec paramètres 1D */
+    MatrixBase(const MatrixBase &);             /* constructeur de copie */
+    virtual ~MatrixBase() override;             /* destructeur */
 
     virtual T getElement(size_t, size_t) const;
     virtual size_t getRows() const;

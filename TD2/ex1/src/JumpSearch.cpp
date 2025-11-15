@@ -12,7 +12,7 @@ int JumpSearch::search(std::vector<int> v1, int target)
 {
     /* Recherche jump */
     totalSearch++; /* Incrémente le nombre de recherches pour toutes instances de la classe */
-    
+
     int n = v1.size();
     if (n == 0)
         return -1;

@@ -27,11 +27,14 @@ void testMatrixNumerical(const std::string &typeName)
     std::cout << "Determinant of Matrix 1: " << det << std::endl;
 
     // Test inverse
-    try {
+    try
+    {
         MatrixNumerical<T> inv = mat1.getInverse();
         std::cout << "Inverse of Matrix 1:" << std::endl;
         inv.Display(std::cout);
-    } catch (const std::exception &e) {
+    }
+    catch (const std::exception &e)
+    {
         std::cout << "Error getting inverse: " << e.what() << std::endl;
     }
 
@@ -41,11 +44,14 @@ void testMatrixNumerical(const std::string &typeName)
     prod.Display(std::cout);
 
     // Test division (Matrix1 / Identity = Matrix1 * Inverse(Identity) = Matrix1)
-    try {
+    try
+    {
         MatrixNumerical<T> div = mat1 / id;
         std::cout << "Matrix 1 / Identity:" << std::endl;
         div.Display(std::cout);
-    } catch (const std::exception &e) {
+    }
+    catch (const std::exception &e)
+    {
         std::cout << "Error in division: " << e.what() << std::endl;
     }
 

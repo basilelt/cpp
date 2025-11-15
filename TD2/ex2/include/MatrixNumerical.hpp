@@ -7,11 +7,11 @@ template <typename T>
 class MatrixNumerical : public MatrixBase<T>
 {
 public:
-    MatrixNumerical();                                         /* constructeur par défaut */
-    MatrixNumerical(std::vector<std::vector<T>>);              /* constructeur avec paramètres */
-    MatrixNumerical(std::vector<T>, size_t, size_t);           /* constructeur avec paramètres 1D */
-    MatrixNumerical(const MatrixNumerical &);                  /* constructeur de copie */
-    virtual ~MatrixNumerical() override;                        /* destructeur */
+    MatrixNumerical();                               /* constructeur par défaut */
+    MatrixNumerical(std::vector<std::vector<T>>);    /* constructeur avec paramètres */
+    MatrixNumerical(std::vector<T>, size_t, size_t); /* constructeur avec paramètres 1D */
+    MatrixNumerical(const MatrixNumerical &);        /* constructeur de copie */
+    virtual ~MatrixNumerical() override;             /* destructeur */
 
     // Operators
     MatrixNumerical operator+(const MatrixNumerical &) const;

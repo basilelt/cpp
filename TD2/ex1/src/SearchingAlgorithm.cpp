@@ -41,7 +41,8 @@ std::ostream &SearchingAlgorithm::displaySearchResults(std::ostream &os, int res
     }
     else
     {
-        os << std::endl << "Elément " << target << " trouvé à l'indice " << results << ".";
+        os << std::endl
+           << "Elément " << target << " trouvé à l'indice " << results << ".";
     }
 
     totalComparisons += numberComparisons; /* Incrémente le nombre total de comparaisons pour toutes instances de la classe */
