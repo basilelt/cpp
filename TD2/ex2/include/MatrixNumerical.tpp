@@ -1,20 +1,21 @@
 #include <stdexcept>
 
-// Fonction auxiliaire pour le cofacteur
+// Fonction auxiliaire pour le cofacteur (free function)
 template <typename T>
-MatrixNumerical<T> MatrixNumerical<T>::getCoFactor(const MatrixNumerical<T> &mat, int p, int q)
+MatrixNumerical<T> getCoFactor(const MatrixNumerical<T> &mat, size_t p, size_t q)
 {
-    int n = mat.getRows();
-    MatrixNumerical<T> cofactor(std::vector<T>((n - 1) * (n - 1), T()), n - 1, n - 1);
+    size_t n = mat.getRows();
+    std::vector<std::vector<T>> cofactorData(n - 1, std::vector<T>(n - 1, T()));
+    MatrixNumerical<T> cofactor(cofactorData);
 
-    int i = 0, j = 0;
-    for (int row = 0; row < n; row++)
+    size_t i = 0, j = 0;
+    for (size_t row = 0; row < n; row++)
     {
-        for (int col = 0; col < n; col++)
+        for (size_t col = 0; col < n; col++)
         {
             if (row != p && col != q)
             {
-                cofactor.addElement(mat.getElement(row + 1, col + 1), i + 1, j + 1);
+                cofactor.addElement(mat.getElement(row, col), i, j);
                 j++;
                 if (j == n - 1)
                 {
@@ -30,6 +31,11 @@ MatrixNumerical<T> MatrixNumerical<T>::getCoFactor(const MatrixNumerical<T> &mat
 // Constructors
 template <typename T>
 MatrixNumerical<T>::MatrixNumerical() : MatrixBase<T>()
+{
+}
+
+template <typename T>
+MatrixNumerical<T>::MatrixNumerical(std::vector<std::vector<T>> _data) : MatrixBase<T>(_data)
 {
 }
 
@@ -57,22 +63,22 @@ T MatrixNumerical<T>::getDeterminant() const
     {
         throw std::invalid_argument("Matrix must be square");
     }
-    int n = this->getRows();
+    size_t n = this->getRows();
     if (n == 1)
     {
-        return this->getElement(1, 1);
+        return this->getElement(0, 0);
     }
     if (n == 2)
     {
-        return this->getElement(1, 1) * this->getElement(2, 2) - this->getElement(1, 2) * this->getElement(2, 1);
+        return this->getElement(0, 0) * this->getElement(1, 1) - this->getElement(0, 1) * this->getElement(1, 0);
     }
 
     T det = T();
     int sign = 1;
-    for (int i = 0; i < n; i++)
+    for (size_t i = 0; i < n; i++)
     {
         MatrixNumerical<T> cofactor = getCoFactor(*this, 0, i);
-        det += sign * this->getElement(1, i + 1) * cofactor.getDeterminant();
+        det += sign * this->getElement(0, i) * cofactor.getDeterminant();
         sign = -sign;
     }
     return det;
@@ -86,34 +92,31 @@ MatrixNumerical<T> MatrixNumerical<T>::getInverse() const
     {
         throw std::invalid_argument("Matrix must be square");
     }
-    int n = this->getRows();
+    size_t n = this->getRows();
     T det = this->getDeterminant();
     if (det == T())
     {
         throw std::invalid_argument("Matrix is singular");
     }
 
-    MatrixNumerical<T> adj(std::vector<T>(n * n, T()), n, n);
-    int sign = 1;
-    for (int i = 0; i < n; i++)
+    std::vector<std::vector<T>> adjData(n, std::vector<T>(n, T()));
+    for (size_t i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (size_t j = 0; j < n; j++)
         {
             MatrixNumerical<T> cofactor = getCoFactor(*this, i, j);
             T cofactorDet = cofactor.getDeterminant();
-            adj.addElement(sign * cofactorDet, j + 1, i + 1); // Transpose
-            sign = -sign;
+            int sign = ((i + j) % 2 == 0) ? 1 : -1;
+            adjData[j][i] = sign * cofactorDet; // Transpose
         }
-        if (n % 2 == 0)
-            sign = -sign; // Adjust sign for next row
     }
 
-    MatrixNumerical<T> inv(std::vector<T>(n * n, T()), n, n);
-    for (int i = 0; i < n; i++)
+    MatrixNumerical<T> inv(adjData);
+    for (size_t i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (size_t j = 0; j < n; j++)
         {
-            inv.addElement(adj.getElement(i + 1, j + 1) / det, i + 1, j + 1);
+            inv.addElement(adjData[i][j] / det, i, j);
         }
     }
     return inv;
@@ -121,14 +124,14 @@ MatrixNumerical<T> MatrixNumerical<T>::getInverse() const
 
 // Matrice identité statique
 template <typename T>
-MatrixNumerical<T> MatrixNumerical<T>::getIdentity(int size)
+MatrixNumerical<T> MatrixNumerical<T>::getIdentity(size_t size)
 {
-    std::vector<T> data(size * size, T());
-    for (int i = 0; i < size; i++)
+    std::vector<std::vector<T>> data(size, std::vector<T>(size, T()));
+    for (size_t i = 0; i < size; i++)
     {
-        data[i * size + i] = T(1);
+        data[i][i] = T(1);
     }
-    return MatrixNumerical<T>(data, size, size);
+    return MatrixNumerical<T>(data);
 }
 
 // Opérateurs
@@ -139,17 +142,17 @@ MatrixNumerical<T> MatrixNumerical<T>::operator+(const MatrixNumerical<T> &other
     {
         throw std::invalid_argument("Matrices must have the same dimensions");
     }
-    int rows = this->getRows();
-    int cols = this->getCols();
-    std::vector<T> result(rows * cols);
-    for (int i = 0; i < rows; i++)
+    size_t rows = this->getRows();
+    size_t cols = this->getCols();
+    std::vector<std::vector<T>> result(rows, std::vector<T>(cols, T()));
+    for (size_t i = 0; i < rows; i++)
     {
-        for (int j = 0; j < cols; j++)
+        for (size_t j = 0; j < cols; j++)
         {
-            result[i * cols + j] = this->getElement(i + 1, j + 1) + other.getElement(i + 1, j + 1);
+            result[i][j] = this->getElement(i, j) + other.getElement(i, j);
         }
     }
-    return MatrixNumerical<T>(result, rows, cols);
+    return MatrixNumerical<T>(result);
 }
 
 template <typename T>
@@ -159,17 +162,17 @@ MatrixNumerical<T> MatrixNumerical<T>::operator-(const MatrixNumerical<T> &other
     {
         throw std::invalid_argument("Matrices must have the same dimensions");
     }
-    int rows = this->getRows();
-    int cols = this->getCols();
-    std::vector<T> result(rows * cols);
-    for (int i = 0; i < rows; i++)
+    size_t rows = this->getRows();
+    size_t cols = this->getCols();
+    std::vector<std::vector<T>> result(rows, std::vector<T>(cols, T()));
+    for (size_t i = 0; i < rows; i++)
     {
-        for (int j = 0; j < cols; j++)
+        for (size_t j = 0; j < cols; j++)
         {
-            result[i * cols + j] = this->getElement(i + 1, j + 1) - other.getElement(i + 1, j + 1);
+            result[i][j] = this->getElement(i, j) - other.getElement(i, j);
         }
     }
-    return MatrixNumerical<T>(result, rows, cols);
+    return MatrixNumerical<T>(result);
 }
 
 template <typename T>
@@ -179,23 +182,23 @@ MatrixNumerical<T> MatrixNumerical<T>::operator*(const MatrixNumerical<T> &other
     {
         throw std::invalid_argument("Number of columns of first matrix must equal number of rows of second matrix");
     }
-    int rows = this->getRows();
-    int cols = other.getCols();
-    int common = this->getCols();
-    std::vector<T> result(rows * cols, T());
-    for (int i = 0; i < rows; i++)
+    size_t rows = this->getRows();
+    size_t cols = other.getCols();
+    size_t common = this->getCols();
+    std::vector<std::vector<T>> result(rows, std::vector<T>(cols, T()));
+    for (size_t i = 0; i < rows; i++)
     {
-        for (int j = 0; j < cols; j++)
+        for (size_t j = 0; j < cols; j++)
         {
             T sum = T();
-            for (int k = 0; k < common; k++)
+            for (size_t k = 0; k < common; k++)
             {
-                sum += this->getElement(i + 1, k + 1) * other.getElement(k + 1, j + 1);
+                sum += this->getElement(i, k) * other.getElement(k, j);
             }
-            result[i * cols + j] = sum;
+            result[i][j] = sum;
         }
     }
-    return MatrixNumerical<T>(result, rows, cols);
+    return MatrixNumerical<T>(result);
 }
 
 template <typename T>

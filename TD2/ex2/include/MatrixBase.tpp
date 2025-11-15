@@ -6,23 +6,37 @@
 /* Constructeur par défaut */
 /* Fait une matrice 2x2 avec des valeurs initiales */
 template <typename T>
-MatrixBase<T>::MatrixBase() : MatrixBase(std::vector<T>(4, initialValue), 2, 2)
+MatrixBase<T>::MatrixBase() : data(2, std::vector<T>(2, initialValue)), rows(2), cols(2)
 {
 }
 
 /* Constructeur avec paramètres */
 template <typename T>
-MatrixBase<T>::MatrixBase(std::vector<T> _data, size_t _rows, size_t _cols) : data(_data), rows(_rows), cols(_cols)
+MatrixBase<T>::MatrixBase(std::vector<std::vector<T>> _data) : data(_data), rows(_data.size()), cols(_data.empty() ? 0 : _data[0].size())
+{
+}
+
+/* Constructeur avec paramètres 1D */
+template <typename T>
+MatrixBase<T>::MatrixBase(std::vector<T> _data, size_t _rows, size_t _cols) : rows(_rows), cols(_cols)
 {
     if (_data.size() != _rows * _cols)
     {
         throw std::invalid_argument("Vector size does not match matrix dimensions");
     }
+    data.resize(_rows, std::vector<T>(_cols));
+    for (size_t i = 0; i < _rows; ++i)
+    {
+        for (size_t j = 0; j < _cols; ++j)
+        {
+            data[i][j] = _data[i * _cols + j];
+        }
+    }
 }
 
 /* Constructeur de copie */
 template <typename T>
-MatrixBase<T>::MatrixBase(const MatrixBase &m) : MatrixBase(m.data, m.rows, m.cols)
+MatrixBase<T>::MatrixBase(const MatrixBase &m) : MatrixBase(m.data)
 {
 }
 
@@ -34,28 +48,27 @@ MatrixBase<T>::~MatrixBase()
 
 /* Getters et Setters */
 template <typename T>
-T MatrixBase<T>::getElement(unsigned int row, unsigned int col) const
+T MatrixBase<T>::getElement(size_t row, size_t col) const
 {
-    // rows, cols, row et col commencent à 1
-    return data[(row - 1) * cols + (col - 1)];
+    return data[row][col];
 }
 
 template <typename T>
-int MatrixBase<T>::getRows() const
+size_t MatrixBase<T>::getRows() const
 {
     return rows;
 }
 
 template <typename T>
-int MatrixBase<T>::getCols() const
+size_t MatrixBase<T>::getCols() const
 {
     return cols;
 }
 
 template <typename T>
-void MatrixBase<T>::addElement(T element, unsigned int row, unsigned int col)
+void MatrixBase<T>::addElement(T element, size_t row, size_t col)
 {
-    data[(row - 1) * cols + (col - 1)] = element;
+    data[row][col] = element;
 }
 
 template <typename T>
@@ -65,7 +78,7 @@ std::ostream &MatrixBase<T>::Display(std::ostream &os) const
     {
         for (size_t c = 0; c < cols; c++)
         {
-            os << std::setfill(' ') << std::setw(4) << getElement(r + 1, c + 1);
+            os << std::setfill(' ') << std::setw(4) << data[r][c];
         }
         os << std::endl;
     }

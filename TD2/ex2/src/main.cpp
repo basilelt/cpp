@@ -7,8 +7,8 @@ void testMatrixNumerical(const std::string &typeName)
     std::cout << "Testing MatrixNumerical<" << typeName << ">" << std::endl;
 
     // Create a 2x2 matrix
-    std::vector<T> data = {T(1), T(2), T(3), T(4)};
-    MatrixNumerical<T> mat1(data, 2, 2);
+    std::vector<std::vector<T>> data = {{T(1), T(2)}, {T(3), T(4)}};
+    MatrixNumerical<T> mat1(data);
     std::cout << "Matrix 1:" << std::endl;
     mat1.Display(std::cout);
 
