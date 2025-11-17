@@ -1,17 +1,41 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 
 void countFrequencyBruteForce(const vector<int> &numbers)
 {
-    // Votre code
+    // Vector to keep track of which elements got counted
+    vector<int> counted;
+
+    // Brute force approach iterating through each element
+    vector<int>::const_iterator i = numbers.begin();
+    for (; i != numbers.end(); ++i)
+    {
+        // If not found in counted vector
+        if (find(counted.begin(), counted.end(), *i) == counted.end())
+        {
+            int count = 0;
+            vector<int>::const_iterator j = numbers.begin();
+            for (; j != numbers.end(); ++j)
+            {
+                if (*i == *j)
+                {
+                    ++count;
+                }
+            }
+            cout << *i << ": " << count << " times" << endl;
+            counted.push_back(*i);
+        }
+    }
 }
 
 map<int, int> countFrequencyOptimal(const vector<int> &numbers)
 {
     // Votre code
+    return map<int, int>{};
 }
 
 int main()

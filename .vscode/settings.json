@@ -70,7 +70,8 @@
         "thread": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "stack": "cpp"
     },
     "code-runner.executorMap": {
         "cpp": "cd $dir && g++ -I../include *.cpp -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
