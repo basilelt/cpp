@@ -58,7 +58,7 @@ int main()
     }
 
     cout << endl
-         << "We have an O(n^2) complexity in the brute force method and O(n) in the optimal" << endl;
+         << "We have an O(n^2) complexity in the brute force method and O(nlogn) in the optimal" << endl;
 
     return 0;
 }
