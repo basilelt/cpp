@@ -11,23 +11,21 @@ void countFrequencyBruteForce(const vector<int> &numbers)
     vector<int> counted;
 
     // Brute force approach iterating through each element
-    vector<int>::const_iterator i = numbers.begin();
-    for (; i != numbers.end(); ++i)
+    for (const int &num : numbers)
     {
         // If i* not found in counted vector
-        if (find(counted.begin(), counted.end(), *i) == counted.end())
+        if (find(counted.begin(), counted.end(), num) == counted.end())
         {
             int count = 0;
-            vector<int>::const_iterator j = numbers.begin();
-            for (; j != numbers.end(); ++j)
+            for (const int &n : numbers)
             {
-                if (*i == *j)
+                if (num == n)
                 {
                     ++count;
                 }
             }
-            cout << *i << ": " << count << " times" << endl;
-            counted.push_back(*i);
+            cout << num << ": " << count << " times" << endl;
+            counted.push_back(num);
         }
     }
 }
