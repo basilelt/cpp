@@ -37,6 +37,7 @@ map<int, int> countFrequencyOptimal(const vector<int> &numbers)
     map<int, int> frequencyMap;
     for (const int &num : numbers)
     {
+        // Increment the count for num (the current number) in the map
         frequencyMap[num]++;
     }
     return frequencyMap;
@@ -57,6 +58,9 @@ int main()
     {
         cout << entry.first << ": " << entry.second << " times" << endl;
     }
+
+    cout << endl
+         << "We have an O(n^2) complexity in the brute force method and O(n) in the optimal" << endl;
 
     return 0;
 }
