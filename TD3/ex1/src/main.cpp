@@ -14,7 +14,7 @@ void countFrequencyBruteForce(const vector<int> &numbers)
     vector<int>::const_iterator i = numbers.begin();
     for (; i != numbers.end(); ++i)
     {
-        // If not found in counted vector
+        // If i* not found in counted vector
         if (find(counted.begin(), counted.end(), *i) == counted.end())
         {
             int count = 0;
@@ -34,8 +34,12 @@ void countFrequencyBruteForce(const vector<int> &numbers)
 
 map<int, int> countFrequencyOptimal(const vector<int> &numbers)
 {
-    // Votre code
-    return map<int, int>{};
+    map<int, int> frequencyMap;
+    for (const int &num : numbers)
+    {
+        frequencyMap[num]++;
+    }
+    return frequencyMap;
 }
 
 int main()
