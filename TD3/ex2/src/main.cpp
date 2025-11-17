@@ -29,6 +29,21 @@ vector<int> twoSumBruteForce(const vector<int> &nums, int target)
 
 vector<int> twoSumOptimal(const vector<int> &nums, int target)
 {
+    unordered_map<int, int> numMap; // Map to store number and its index
+    for (int i = 0; i < nums.size(); ++i)
+    {
+        // Complement is the number we need to find to reach the target
+        int complement = target - nums[i];
+
+        // Check if the complement exists in the map
+        if (numMap.find(complement) != numMap.end())
+        {
+            return {numMap[complement], i};
+        }
+
+        // Store the number with its index
+        numMap[nums[i]] = i;
+    }
     // If no solution found
     return {-1, -1};
 }
@@ -53,6 +68,9 @@ int main()
          << indicesOptimal[1]
          << "]"
          << endl;
+
+    cout << endl
+         << "We have an O(n^2) complexity in the brute force method and O(n) in the optimal" << endl;
 
     return 0;
 }
