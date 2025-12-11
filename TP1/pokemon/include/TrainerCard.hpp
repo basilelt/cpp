@@ -8,7 +8,7 @@ class TrainerCard : public Card
 {
 public:
     TrainerCard();                    /* constructeur par défaut */
-    TrainerCard(std::string);         /* constructeur avec paramètres */
+    TrainerCard(std::string, std::string);         /* constructeur avec paramètres */
     TrainerCard(const TrainerCard &); /* constructeur de copie */
     virtual ~TrainerCard();           /* destructeur */
 
