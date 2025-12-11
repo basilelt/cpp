@@ -19,13 +19,16 @@ public:
     virtual std::ostream &displayInfo(std::ostream &os) const override; /* Méthode virtuelle pure */
 
 private:
-    std::string cardName;
     std::string pokemonType;
     std::string familyName;
     int evolutionLevel;
     int maxHP;
     int hp;
     std::vector<std::tuple<int, int, std::string, int>> attacks;
+    int energyCost;
+    int energyCurrent;
+    std::string attackDescription;
+    int attack;
 };
 
 #endif /* PokemonCard_hpp */
