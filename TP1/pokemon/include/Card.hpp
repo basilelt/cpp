@@ -14,7 +14,7 @@ public:
 
     virtual Card &operator=(const Card &); /* opérateur d'affectation */
 
-    virtual std::ostream &diplayInfo(std::ostream &os) const = 0; /* Méthode virtuelle pure */
+    virtual std::ostream &displayInfo(std::ostream &os) const = 0; /* Méthode virtuelle pure */
 
 protected:
     std::string cardName;
