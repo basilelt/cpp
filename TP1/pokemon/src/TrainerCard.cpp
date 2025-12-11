@@ -3,17 +3,18 @@
 #include <iostream>
 
 /* Constructeur par défaut */
-TrainerCard::TrainerCard() : Card("Energy"), energyType("")
+TrainerCard::TrainerCard() : Card(""), trainerEffect("")
 {
 }
 
 /* Constructeur avec paramètres */
-TrainerCard::TrainerCard(std::string _energyType) : Card("Energy"), energyType(_energyType)
+TrainerCard::TrainerCard(std::string _trainerName, std::string _trainerEffect) : Card(_trainerName),
+                                                                                 trainerEffect(_trainerEffect)
 {
 }
 
 /* Constructeur de copie */
-TrainerCard::TrainerCard(const TrainerCard &ec) : Card(ec), energyType(ec.energyType)
+TrainerCard::TrainerCard(const TrainerCard &ec) : Card(ec), trainerEffect(ec.trainerEffect)
 {
 }
 
@@ -28,7 +29,7 @@ TrainerCard &TrainerCard::operator=(const TrainerCard &ec)
     if (&ec != this)
     {
         Card::operator=(ec);
-        energyType = ec.energyType;
+        trainerEffect = ec.trainerEffect;
     }
     return *this;
 }
@@ -37,17 +38,17 @@ TrainerCard &TrainerCard::operator=(const TrainerCard &ec)
 std::ostream &TrainerCard::displayInfo(std::ostream &os) const
 {
     os << "TrainerCard: " << cardName << std::endl;
-    os << "EnergyType: " << energyType << std::endl;
+    os << "TrainerEffect: " << trainerEffect << std::endl;
     return os;
 }
 
 /* Getters et Setters */
-std::string TrainerCard::getEnergyType() const
+std::string TrainerCard::getTrainerEffect() const
 {
-    return energyType;
+    return trainerEffect;
 }
 
-void TrainerCard::setEnergyType(const std::string &_energyType)
+void TrainerCard::setTrainerEffect(const std::string &_trainerEffect)
 {
-    energyType = _energyType;
+    trainerEffect = _trainerEffect;
 }

@@ -14,13 +14,13 @@ public:
 
     virtual TrainerCard &operator=(const TrainerCard &); /* opérateur d'affectation */
 
-    virtual std::string getEnergyType() const;
-    virtual void setEnergyType(const std::string &);
+    virtual std::string getTrainerEffect() const;
+    virtual void setTrainerEffect(const std::string &);
 
     virtual std::ostream &displayInfo(std::ostream &) const override; /* Méthode virtuelle pure */
 
 private:
-    std::string energyType;
+    std::string trainerEffect;
 };
 
 #endif /* TrainerCard_hpp */
