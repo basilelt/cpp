@@ -40,3 +40,14 @@ std::ostream &EnergyCard::displayInfo(std::ostream &os) const
     os << "EnergyType: " << energyType << std::endl;
     return os;
 }
+
+/* Getters et Setters */
+std::string EnergyCard::getEnergyType() const
+{
+    return energyType;
+}
+
+void EnergyCard::setEnergyType(const std::string &_energyType)
+{
+    energyType = _energyType;
+}

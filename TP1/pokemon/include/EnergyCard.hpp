@@ -14,7 +14,10 @@ public:
 
     virtual EnergyCard &operator=(const EnergyCard &); /* opérateur d'affectation */
 
-    virtual std::ostream &displayInfo(std::ostream &os) const override; /* Méthode virtuelle pure */
+    virtual std::ostream &displayInfo(std::ostream &) const override; /* Méthode virtuelle pure */
+
+    virtual std::string getEnergyType() const;
+    virtual void setEnergyType(const std::string &);
 
 private:
     std::string energyType;

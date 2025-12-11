@@ -26,7 +26,28 @@ public:
 
     virtual PokemonCard &operator=(const PokemonCard &); /* opérateur d'affectation */
 
-    virtual std::ostream &displayInfo(std::ostream &os) const override; /* Méthode virtuelle pure */
+    virtual std::ostream &displayInfo(std::ostream &) const override; /* Méthode virtuelle pure */
+
+    virtual std::string getPokemonType() const;
+    virtual void setPokemonType(const std::string &);
+    virtual std::string getFamilyName() const;
+    virtual void setFamilyName(const std::string &);
+    virtual int getEvolutionLevel() const;
+    virtual void setEvolutionLevel(int);
+    virtual int getMaxHP() const;
+    virtual void setMaxHP(int);
+    virtual int getHP() const;
+    virtual void setHP(int);
+    virtual const std::vector<std::tuple<int, int, std::string, int>> &getAttacks() const;
+    virtual void setAttacks(const std::vector<std::tuple<int, int, std::string, int>> &);
+    virtual int getEnergyCost() const;
+    virtual void setEnergyCost(int);
+    virtual int getEnergyCurrent() const;
+    virtual void setEnergyCurrent(int);
+    virtual std::string getAttackDescription() const;
+    virtual void setAttackDescription(const std::string &);
+    virtual int getAttack() const;
+    virtual void setAttack(int);
 
 private:
     std::string pokemonType;

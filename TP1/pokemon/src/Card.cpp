@@ -31,3 +31,14 @@ Card &Card::operator=(const Card &c)
     }
     return *this;
 }
+
+/* Getters et Setters */
+std::string Card::getCardName() const
+{
+    return cardName;
+}
+
+void Card::setCardName(const std::string &_cardName)
+{
+    cardName = _cardName;
+}

@@ -20,7 +20,7 @@ public:
     virtual void translate(int, int);
 
     /* Override car ancêtre */
-    virtual std::ostream &PrintOn(std::ostream &os) const override;
+    virtual std::ostream &PrintOn(std::ostream &) const override;
 
 private:
     int x, y;

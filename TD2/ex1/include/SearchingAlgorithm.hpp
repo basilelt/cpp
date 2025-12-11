@@ -17,7 +17,7 @@ public:
     virtual std::ostream &displaySearchResults(std::ostream &, int, int) const;
 
     /* Override car ancêtre */
-    virtual std::ostream &PrintOn(std::ostream &os) const override;
+    virtual std::ostream &PrintOn(std::ostream &) const override;
 
     static unsigned int totalComparisons, totalSearch;
     static double averageComparisons;

@@ -20,10 +20,10 @@ public:
     virtual void addElement(T, size_t, size_t);
 
     /* Pas d'ancêtre, pas d'override */
-    virtual std::ostream &Display(std::ostream &os) const;
+    virtual std::ostream &Display(std::ostream &) const;
 
     /* Override car ancêtre */
-    virtual std::ostream &PrintOn(std::ostream &os) const override;
+    virtual std::ostream &PrintOn(std::ostream &) const override;
 
 protected:
     std::vector<std::vector<T>> data;

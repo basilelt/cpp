@@ -105,3 +105,104 @@ std::ostream &PokemonCard::displayInfo(std::ostream &os) const
     os << "Attack: " << attack << std::endl;
     return os;
 }
+
+/* Getters and setters */
+std::string PokemonCard::getPokemonType() const
+{
+    return pokemonType;
+}
+
+void PokemonCard::setPokemonType(const std::string &_pokemonType)
+{
+    pokemonType = _pokemonType;
+}
+
+std::string PokemonCard::getFamilyName() const
+{
+    return familyName;
+}
+
+void PokemonCard::setFamilyName(const std::string &_familyName)
+{
+    familyName = _familyName;
+}
+
+int PokemonCard::getEvolutionLevel() const
+{
+    return evolutionLevel;
+}
+
+void PokemonCard::setEvolutionLevel(int _evolutionLevel)
+{
+    evolutionLevel = _evolutionLevel;
+}
+
+int PokemonCard::getMaxHP() const
+{
+    return maxHP;
+}
+
+void PokemonCard::setMaxHP(int _maxHP)
+{
+    maxHP = _maxHP;
+}
+
+int PokemonCard::getHP() const
+{
+    return hp;
+}
+
+void PokemonCard::setHP(int _hp)
+{
+    hp = _hp;
+}
+
+const std::vector<std::tuple<int, int, std::string, int>> &PokemonCard::getAttacks() const
+{
+    return attacks;
+}
+
+void PokemonCard::setAttacks(const std::vector<std::tuple<int, int, std::string, int>> &_attacks)
+{
+    attacks = _attacks;
+}
+
+int PokemonCard::getEnergyCost() const
+{
+    return energyCost;
+}
+
+void PokemonCard::setEnergyCost(int _energyCost)
+{
+    energyCost = _energyCost;
+}
+
+int PokemonCard::getEnergyCurrent() const
+{
+    return energyCurrent;
+}
+
+void PokemonCard::setEnergyCurrent(int _energyCurrent)
+{
+    energyCurrent = _energyCurrent;
+}
+
+std::string PokemonCard::getAttackDescription() const
+{
+    return attackDescription;
+}
+
+void PokemonCard::setAttackDescription(const std::string &_attackDescription)
+{
+    attackDescription = _attackDescription;
+}
+
+int PokemonCard::getAttack() const
+{
+    return attack;
+}
+
+void PokemonCard::setAttack(int _attack)
+{
+    attack = _attack;
+}
