@@ -1,33 +1,42 @@
-#include "Card.hpp"
+#include "EnergyCard.hpp"
 #include <string>
 #include <iostream>
 
 /* Constructeur par défaut */
-Card::Card() : cardName("")
+EnergyCard::EnergyCard() : Card("Energy"), energyType("")
 {
 }
 
 /* Constructeur avec paramètres */
-Card::Card(std::string _cardName) : cardName(_cardName)
+EnergyCard::EnergyCard(std::string _energyType) : Card("Energy"), energyType(_energyType)
 {
 }
 
 /* Constructeur de copie */
-Card::Card(const Card &c) : cardName(c.cardName)
+EnergyCard::EnergyCard(const EnergyCard &ec) : Card(ec), energyType(ec.energyType)
 {
 }
 
 /* Destructeur */
-Card::~Card()
+EnergyCard::~EnergyCard()
 {
 }
 
 /* Opérateur d'affectation */
-Card &Card::operator=(const Card &c)
+EnergyCard &EnergyCard::operator=(const EnergyCard &ec)
 {
-    if (&c != this)
+    if (&ec != this)
     {
-        cardName = c.cardName;
+        Card::operator=(ec);
+        energyType = ec.energyType;
     }
     return *this;
+}
+
+/* Surcharge de l'opérateur d'affichage */
+std::ostream &EnergyCard::displayInfo(std::ostream &os) const
+{
+    os << "EnergyCard: " << cardName << std::endl;
+    os << "EnergyType: " << energyType << std::endl;
+    return os;
 }

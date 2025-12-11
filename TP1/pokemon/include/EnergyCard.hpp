@@ -1,23 +1,23 @@
-#ifndef CARD_H
-#define CARD_H
+#ifndef ENERGYCARD_H
+#define ENERGYCARD_H
 
 #include <string>
-#include "Base.hpp"
+#include "Card.hpp"
 
-class Card : public Base
+class EnergyCard : public Card
 {
 public:
-    Card();             /* constructeur par défaut */
-    Card(std::string);  /* constructeur avec paramètres */
-    Card(const Card &); /* constructeur de copie */
-    virtual ~Card();    /* destructeur */
+    EnergyCard();                   /* constructeur par défaut */
+    EnergyCard(std::string);        /* constructeur avec paramètres */
+    EnergyCard(const EnergyCard &); /* constructeur de copie */
+    virtual ~EnergyCard();          /* destructeur */
 
-    virtual Card &operator=(const Card &); /* opérateur d'affectation */
+    virtual EnergyCard &operator=(const EnergyCard &); /* opérateur d'affectation */
 
-    virtual std::ostream &displayInfo(std::ostream &os) const = 0; /* Méthode virtuelle pure */
+    virtual std::ostream &displayInfo(std::ostream &os) const override; /* Méthode virtuelle pure */
 
-protected:
-    std::string cardName;
+private:
+    std::string energyType;
 };
 
-#endif /* Card_hpp */
+#endif /* EnergyCard_hpp */
