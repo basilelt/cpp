@@ -12,7 +12,7 @@ public:
     PokemonCard(); /* constructeur par défaut */
     PokemonCard(std::string,
                 std::string,
-                int,
+                std::string,
                 int,
                 int,
                 int,
