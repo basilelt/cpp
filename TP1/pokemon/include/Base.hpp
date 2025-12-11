@@ -8,7 +8,7 @@
 class Base : public Class
 {
 public:
-    virtual std::ostream &PrintOn(std::ostream &os) const = 0;
+    virtual std::ostream &PrintOn(std::ostream &os) const = 0; /* Méthode virtuelle pure */
     friend std::ostream &operator<<(std::ostream &os, const Base &);
 };
 

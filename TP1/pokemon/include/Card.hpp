@@ -6,24 +6,10 @@
 class Card : public Base
 {
 public:
-    Card();             /* constructeur par défaut */
-    Card(int, int);     /* constructeur avec paramètres */
-    Card(const Card &); /* constructeur de copie */
-    virtual ~Card();    /* destructeur */
+    virtual std::ostream &diplayInfo(std::ostream &os) const = 0; /* Méthode virtuelle pure */
 
-    virtual Card &operator=(const Card &); /* opérateur d'affectation */
-
-    virtual int getX() const;
-    virtual int getY() const;
-    virtual void setX(int);
-    virtual void setY(int);
-    virtual void translate(int, int);
-
-    /* Override car ancêtre */
-    virtual std::ostream &PrintOn(std::ostream &os) const override;
-
-private:
-    int x, y;
+protected:
+    std::string cardName;
 };
 
-#endif /* Point_hpp */
+#endif /* Card_hpp */
