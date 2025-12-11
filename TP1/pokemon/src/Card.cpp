@@ -1,18 +1,19 @@
 #include "Card.hpp"
+#include <string>
 #include <iostream>
 
 /* Constructeur par défaut */
-Card::Card() : Card(0, 0)
+Card::Card() : cardName("")
 {
 }
 
 /* Constructeur avec paramètres */
-Card::Card(int _x, int _y) : x(_x), y(_y)
+Card::Card(std::string _cardName) : cardName(_cardName)
 {
 }
 
 /* Constructeur de copie */
-Card::Card(const Card &p) : Card(p.x, p.y)
+Card::Card(const Card &c) : cardName(c.cardName)
 {
 }
 
@@ -22,20 +23,11 @@ Card::~Card()
 }
 
 /* Opérateur d'affectation */
-Card &Card::operator=(const Card &p)
+Card &Card::operator=(const Card &c)
 {
-    if (&p != this)
+    if (&c != this)
     {
-        x = p.x;
-        y = p.y;
+        cardName = c.cardName;
     }
     return *this;
-}
-
-/* Surcharge de l'opérateur d'affichage */
-std::ostream &Card::PrintOn(std::ostream &os) const
-{
-    os << "Card(";
-    os << x << ", " << y << ")";
-    return os;
 }
