@@ -4,7 +4,8 @@
       "name": "Linux",
       "includePath": [
         "${workspaceFolder}/**/src",
-        "${workspaceFolder}/**/include"
+        "${workspaceFolder}/**/include",
+        "${workspaceFolder}/TP1/pokemon/include"
       ],
       "defines": [],
       "compilerPath": "/usr/bin/g++",
