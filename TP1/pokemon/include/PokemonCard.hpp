@@ -9,8 +9,18 @@
 class PokemonCard : public Card
 {
 public:
-    PokemonCard();                    /* constructeur par défaut */
-    PokemonCard(std::string);         /* constructeur avec paramètres */
+    PokemonCard(); /* constructeur par défaut */
+    PokemonCard(std::string,
+                std::string,
+                int,
+                int,
+                int,
+                int,
+                std::vector<std::tuple<int, int, std::string, int>>,
+                int,
+                int,
+                std::string,
+                int);                 /* constructeur avec paramètres */
     PokemonCard(const PokemonCard &); /* constructeur de copie */
     virtual ~PokemonCard();           /* destructeur */
 
