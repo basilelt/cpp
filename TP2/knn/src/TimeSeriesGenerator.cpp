@@ -13,7 +13,7 @@ TimeSeriesGenerator::TimeSeriesGenerator(int _seed) : seed(_seed)
 }
 
 /* Constructeur de copie */
-TimeSeriesGenerator::TimeSeriesGenerator(const TimeSeriesGenerator &p) : TimeSeriesGenerator(p.x, p.y)
+TimeSeriesGenerator::TimeSeriesGenerator(const TimeSeriesGenerator &tsg) : TimeSeriesGenerator(tsg.seed)
 {
 }
 
