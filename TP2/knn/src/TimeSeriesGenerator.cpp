@@ -1,13 +1,14 @@
 #include "TimeSeriesGenerator.hpp"
 #include <iostream>
+#include <vector>
 
 /* Constructeur par défaut */
-TimeSeriesGenerator::TimeSeriesGenerator() : TimeSeriesGenerator(0, 0)
+TimeSeriesGenerator::TimeSeriesGenerator() : TimeSeriesGenerator(0)
 {
 }
 
 /* Constructeur avec paramètres */
-TimeSeriesGenerator::TimeSeriesGenerator(int _x, int _y) : x(_x), y(_y)
+TimeSeriesGenerator::TimeSeriesGenerator(int _seed) : seed(_seed)
 {
 }
 
@@ -22,47 +23,32 @@ TimeSeriesGenerator::~TimeSeriesGenerator()
 }
 
 /* Opérateur d'affectation */
-TimeSeriesGenerator &TimeSeriesGenerator::operator=(const TimeSeriesGenerator &p)
+TimeSeriesGenerator &TimeSeriesGenerator::operator=(const TimeSeriesGenerator &tsg)
 {
-    if (&p != this)
+    if (&tsg != this)
     {
-        x = p.x;
-        y = p.y;
+        seed = tsg.seed;
     }
     return *this;
 }
 
 /* Getters et Setters */
-int TimeSeriesGenerator::getX() const
+int TimeSeriesGenerator::getSeed() const
 {
-    return x;
+    return seed;
 }
 
-int TimeSeriesGenerator::getY() const
+void TimeSeriesGenerator::setSeed(int _seed)
 {
-    return y;
+    seed = _seed;
 }
 
-void TimeSeriesGenerator::setX(int _x)
+/* Méthodes */
+void TimeSeriesGenerator::printTimeSeries(const std::vector<double> &timeSeries) const
 {
-    x = _x;
-}
-
-void TimeSeriesGenerator::setY(int _y)
-{
-    y = _y;
-}
-
-void TimeSeriesGenerator::translate(int dx, int dy)
-{
-    x += dx;
-    y += dy;
-}
-
-/* Surcharge de l'opérateur d'affichage */
-std::ostream &TimeSeriesGenerator::PrintOn(std::ostream &os) const
-{
-    os << "TimeSeriesGenerator(";
-    os << x << ", " << y << ")";
-    return os;
+    for (const auto &value : timeSeries)
+    {
+        std::cout << value << " ";
+    }
+    std::cout << std::endl;
 }

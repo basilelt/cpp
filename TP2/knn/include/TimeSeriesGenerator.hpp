@@ -2,28 +2,26 @@
 #define TIMESERIESGENERATOR_H
 
 #include "Base.hpp"
+#include <vector>
 
 class TimeSeriesGenerator : public Base
 {
 public:
-    TimeSeriesGenerator();              /* constructeur par défaut */
-    TimeSeriesGenerator(int, int);      /* constructeur avec paramètres */
+    TimeSeriesGenerator();                            /* constructeur par défaut */
+    TimeSeriesGenerator(int);                         /* constructeur avec paramètres */
     TimeSeriesGenerator(const TimeSeriesGenerator &); /* constructeur de copie */
-    virtual ~TimeSeriesGenerator();     /* destructeur */
+    virtual ~TimeSeriesGenerator();                   /* destructeur */
 
     virtual TimeSeriesGenerator &operator=(const TimeSeriesGenerator &); /* opérateur d'affectation */
 
-    virtual int getX() const;
-    virtual int getY() const;
-    virtual void setX(int);
-    virtual void setY(int);
-    virtual void translate(int, int);
+    virtual int getSeed() const;
+    virtual void setSeed(int);
 
-    /* Override car ancêtre */
-    virtual std::ostream &PrintOn(std::ostream &) const override;
+    virtual std::vector<double> generateTimeSeries(int) const = 0;
+    void printTimeSeries(const std::vector<double> &) const;
 
 private:
-    int x, y;
+    int seed;
 };
 
 #endif /* TimeSeriesGenerator_hpp */
