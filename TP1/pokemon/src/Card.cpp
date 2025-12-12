@@ -3,7 +3,7 @@
 #include <iostream>
 
 /* Constructeur par défaut */
-Card::Card() : cardName("")
+Card::Card() : Card("")
 {
 }
 
