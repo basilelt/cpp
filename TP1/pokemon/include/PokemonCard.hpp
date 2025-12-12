@@ -21,6 +21,17 @@ public:
                 int,
                 std::string,
                 int);                 /* constructeur avec paramètres */
+    PokemonCard(std::string cardName,
+                std::string pokemonType,
+                std::string familyName,
+                int evolutionLevel,
+                int maxHP,
+                int hp,
+                std::string attack1Desc,
+                int attack1Damage,
+                int attack2Cost,
+                std::string attack2Desc,
+                int attack2Damage);   /* constructeur alternatif */
     PokemonCard(const PokemonCard &); /* constructeur de copie */
     virtual ~PokemonCard();           /* destructeur */
 
@@ -48,6 +59,8 @@ public:
     virtual void setAttackDescription(const std::string &);
     virtual int getAttack() const;
     virtual void setAttack(int);
+
+    void attachEnergy();
 
 private:
     std::string pokemonType;

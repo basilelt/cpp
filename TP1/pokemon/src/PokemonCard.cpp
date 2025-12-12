@@ -61,6 +61,32 @@ PokemonCard::~PokemonCard()
 {
 }
 
+/* Constructeur alternatif avec attaques séparées */
+PokemonCard::PokemonCard(std::string _cardName,
+                         std::string _pokemonType,
+                         std::string _familyName,
+                         int _evolutionLevel,
+                         int _maxHP,
+                         int _hp,
+                         std::string _attack1Desc,
+                         int _attack1Damage,
+                         int _attack2Cost,
+                         std::string _attack2Desc,
+                         int _attack2Damage) : Card(_cardName),
+                                              pokemonType(_pokemonType),
+                                              familyName(_familyName),
+                                              evolutionLevel(_evolutionLevel),
+                                              maxHP(_maxHP),
+                                              hp(_hp),
+                                              attacks({std::make_tuple(2, 0, _attack1Desc, _attack1Damage),
+                                                       std::make_tuple(_attack2Cost, 0, _attack2Desc, _attack2Damage)}),
+                                              energyCost(0),
+                                              energyCurrent(0),
+                                              attackDescription(""),
+                                              attack(0)
+{
+}
+
 /* Opérateur d'affectation */
 PokemonCard &PokemonCard::operator=(const PokemonCard &pc)
 {
@@ -205,4 +231,13 @@ int PokemonCard::getAttack() const
 void PokemonCard::setAttack(int _attack)
 {
     attack = _attack;
+}
+
+void PokemonCard::attachEnergy()
+{
+    for (auto &attack : attacks)
+    {
+        std::get<1>(attack)++;
+    }
+    energyCurrent++;
 }
