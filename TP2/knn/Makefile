@@ -1,6 +1,6 @@
 BUILD_DIR = build
 CXX = g++
-CXXFLAGS = -std=c++23 -Wall -Wextra -I include/
+CXXFLAGS = -std=c++17-Wall -Wextra -I include/
 TARGET = main
 SRCS = $(wildcard src/*.cpp)
 OBJS = $(notdir $(SRCS:.cpp=.o))
