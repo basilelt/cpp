@@ -10,10 +10,10 @@
 class Player : public Base
 {
 public:
-    Player();                                                             /* constructeur par défaut */
-    Player(std::string, std::vector<Card *>, std::vector<PokemonCard *>); /* constructeur avec paramètres */
-    Player(const Player &);                                               /* constructeur de copie */
-    virtual ~Player();                                                    /* destructeur */
+    Player();               /* constructeur par défaut */
+    Player(std::string);    /* constructeur avec paramètres */
+    Player(const Player &); /* constructeur de copie */
+    virtual ~Player();      /* destructeur */
 
     virtual Player &operator=(const Player &); /* opérateur d'affectation */
 
@@ -23,6 +23,14 @@ public:
     virtual void setBenchCards(const std::vector<Card *> &);
     virtual const std::vector<PokemonCard *> &getActionCards() const;
     virtual void setActionCards(const std::vector<PokemonCard *> &);
+
+    void addCardToBench(Card *card);
+    void activatePokemonCard(int index);
+    void attachEnergyCard(int benchIndex, int actionIndex);
+    void displayBench();
+    void displayAction();
+    void attack(int attackerIndex, int attackIndex, Player &opponent, int defenderIndex);
+    void useTrainer(int index);
 
 protected:
     std::string playerName;
