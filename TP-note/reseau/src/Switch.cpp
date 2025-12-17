@@ -1,54 +1,54 @@
-#include "Router.hpp"
+#include "Switch.hpp"
 #include <iostream>
 #include <string>
 #include "NetworkDevice.hpp"
 
 /* Constructeur par défaut */
-Router::Router() : NetworkDevice(), routingTableSize(0)
+Switch::Switch() : NetworkDevice(), portCount(0)
 {
 }
 
 /* Constructeur avec paramètres */
-Router::Router(int _routingTableSize) : NetworkDevice(), routingTableSize(_routingTableSize)
+Switch::Switch(int _portCount) : NetworkDevice(), portCount(_portCount)
 {
 }
 
 /* Constructeur de copie */
-Router::Router(const Router &r) : NetworkDevice(r), routingTableSize(r.routingTableSize)
+Switch::Switch(const Switch &s) : NetworkDevice(s), portCount(s.portCount)
 {
 }
 
 /* Destructeur */
-Router::~Router()
+Switch::~Switch()
 {
 }
 
 /* Opérateur d'affectation */
-Router &Router::operator=(const Router &r)
+Switch &Switch::operator=(const Switch &s)
 {
-    if (&r != this)
+    if (&s != this)
     {
-        NetworkDevice::operator=(r);
-        routingTableSize = r.routingTableSize;
+        NetworkDevice::operator=(s);
+        portCount = s.portCount;
     }
     return *this;
 }
 
 /* Getters et Setters */
-int Router::getRoutingTableSize() const
+int Switch::getPortCount() const
 {
-    return routingTableSize;
+    return portCount;
 }
 
-void Router::setRoutingTableSize(int _routingTableSize)
+void Switch::setPortCount(int _portCount)
 {
-    routingTableSize = _routingTableSize;
+    portCount = _portCount;
 }
 
 /* Surcharge de l'opérateur d'affichage */
-std::ostream &Router::printInfo(std::ostream &os) const
+std::ostream &Switch::printInfo(std::ostream &os) const
 {
-    os << "Router: " << std::endl;
+    os << "Switch: " << std::endl;
     os << "Hostname: " << hostname << std::endl;
     os << "IP address: " << ipAddress << std::endl;
     os << "Location: " << location << std::endl;
@@ -60,7 +60,7 @@ std::ostream &Router::printInfo(std::ostream &os) const
     else
         os << "This device is not critical)" << std::endl;
     os << "Power consumption: " << powerConsumption << " W" << std::endl;
-    os << "Routing table size: " << routingTableSize << std::endl;
+    os << "Port count: " << portCount << std::endl;
     os << std::endl;
     return os;
 }
