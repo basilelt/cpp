@@ -20,7 +20,7 @@ public:
     virtual std::ostream &printInfo(std::ostream &) const override;
 
 private:
-    int routingTableSize;
+    int routingTableSize; // nombre de routes
 };
 
 #endif /* Router_hpp */

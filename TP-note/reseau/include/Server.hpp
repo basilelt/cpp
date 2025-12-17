@@ -20,7 +20,7 @@ public:
     virtual std::ostream &printInfo(std::ostream &) const override;
 
 private:
-    int cpuCores;
+    int cpuCores; // nombre de cœurs CPU
 };
 
 #endif /* Server_hpp */

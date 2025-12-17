@@ -30,7 +30,7 @@ public:
     virtual double getPowerConsumption() const;
     virtual bool getIsCritical() const;
     virtual void setHostname(const std::string &);
-    virtual void setIpAdress(const std::string &);
+    virtual void setIpAddress(const std::string &);
     virtual void setLocation(const std::string &);
     virtual void setVendor(const std::string &);
     virtual void setOsVersion(const std::string &);

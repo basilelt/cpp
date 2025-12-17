@@ -153,12 +153,8 @@ void NetworkDevice::setIsCritical(bool _isCritical)
 
 void NetworkDevice::ping() const
 {
-    std::cout << "Pinging " << ipAddress;
-    std::cout << "..." << std::endl;
-
-    // test ici
-    std::cout << "Reply from " << ipAddress;
-    std::cout << ": bytes=32 time=20ms TTL=64";
+    std::cout << "Hostname: " << hostname << std::endl;
+    std::cout << "IP address: " << ipAddress << std::endl;
     std::cout << std::endl;
 }
 

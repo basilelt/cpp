@@ -20,7 +20,7 @@ public:
     virtual std::ostream &printInfo(std::ostream &) const override;
 
 private:
-    int portCount;
+    int portCount; // nombre de ports
 };
 
 #endif /* Switch_hpp */
