@@ -44,11 +44,17 @@ void TimeSeriesGenerator::setSeed(int _seed)
 }
 
 /* Méthodes */
-void TimeSeriesGenerator::printTimeSeries(const std::vector<double> &timeSeries) const
+void TimeSeriesGenerator::printTimeSeries(const std::vector<double> &timeSeries)
 {
     for (const auto &value : timeSeries)
     {
         std::cout << value << " ";
     }
     std::cout << std::endl;
+}
+
+std::ostream &TimeSeriesGenerator::PrintOn(std::ostream &os) const
+{
+    os << "TimeSeriesGenerator with seed: " << seed;
+    return os;
 }

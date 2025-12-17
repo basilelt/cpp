@@ -18,7 +18,9 @@ public:
     virtual void setSeed(int);
 
     virtual std::vector<double> generateTimeSeries(int) const = 0;
-    void printTimeSeries(const std::vector<double> &) const;
+    static void printTimeSeries(const std::vector<double> &);
+
+    virtual std::ostream &PrintOn(std::ostream &) const override;
 
 private:
     int seed;

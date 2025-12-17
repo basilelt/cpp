@@ -7,7 +7,7 @@ class GaussianGenerator : public TimeSeriesGenerator
 {
 public:
     GaussianGenerator();                          /* constructeur par défaut */
-    GaussianGenerator(int, int);                  /* constructeur avec paramètres */
+    GaussianGenerator(float, float);                  /* constructeur avec paramètres */
     GaussianGenerator(const GaussianGenerator &); /* constructeur de copie */
     virtual ~GaussianGenerator();                 /* destructeur */
 
@@ -20,6 +20,8 @@ public:
 
     /* Override car ancêtre */
     virtual std::vector<double> generateTimeSeries(int) const override;
+
+    virtual std::ostream &PrintOn(std::ostream &) const override;
 
 private:
     float mean;

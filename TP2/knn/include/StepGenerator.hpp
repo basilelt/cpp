@@ -11,6 +11,8 @@ public:
 
     /* Override car ancêtre */
     virtual std::vector<double> generateTimeSeries(int) const override;
+
+    virtual std::ostream &PrintOn(std::ostream &) const override;
 };
 
 #endif /* StepGenerator_hpp */
