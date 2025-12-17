@@ -30,7 +30,6 @@ int main()
     device1.ping();
     std::cout << std::endl;
 
-    
     Server server1;
     server1.printInfo(std::cout);
     std::cout << std::endl;
@@ -46,7 +45,6 @@ int main()
     server2.setIsCritical(true);
     server2.printInfo(std::cout);
     std::cout << std::endl;
-
 
     Router router1;
     router1.printInfo(std::cout);
@@ -64,7 +62,6 @@ int main()
     router2.printInfo(std::cout);
     std::cout << std::endl;
 
-
     Switch switch1;
     switch1.printInfo(std::cout);
     std::cout << std::endl;
@@ -80,7 +77,6 @@ int main()
     switch2.setIsCritical(false);
     switch2.printInfo(std::cout);
     std::cout << std::endl;
-
 
     NetworkInfrastructure infra("infra", 10, {});
     std::cout << "Infrastructure Name: " << infra.getName() << std::endl;

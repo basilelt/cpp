@@ -130,7 +130,7 @@ void NetworkInfrastructure::addDevice(NetworkDevice *device)
 
 void NetworkInfrastructure::searchDeviceByHostname(const std::string &hostname) const
 {
-    // Binary search since devices are sorted by hostname
+    // Binary search comme en TD = O(log n)
     int left = 0;
     int right = devices.size() - 1;
 
