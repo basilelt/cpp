@@ -1,68 +1,178 @@
-#include "Point.hpp"
+#include "NetworkDevice.hpp"
 #include <iostream>
+#include <string>
 
 /* Constructeur par défaut */
-Point::Point() : Point(0, 0)
+NetworkDevice::NetworkDevice() : NetworkDevice(
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     0,
+                                     0.0,
+                                     false)
 {
 }
 
 /* Constructeur avec paramètres */
-Point::Point(int _x, int _y) : x(_x), y(_y)
+NetworkDevice::NetworkDevice(
+    std::string _hostname,
+    std::string _ipAdress,
+    std::string _location,
+    std::string _vendor,
+    std::string _osVersion,
+    int _year,
+    double _powerConsumption,
+    bool _isCritical) : hostname(_hostname),
+                        ipAdress(_ipAdress),
+                        location(_location),
+                        vendor(_vendor),
+                        osVersion(_osVersion),
+                        year(_year),
+                        powerConsumption(_powerConsumption),
+                        isCritical(_isCritical)
 {
 }
 
 /* Constructeur de copie */
-Point::Point(const Point &p) : Point(p.x, p.y)
+NetworkDevice::NetworkDevice(const NetworkDevice &p) : NetworkDevice(
+                                                           p.hostname,
+                                                           p.ipAdress,
+                                                           p.location,
+                                                           p.vendor,
+                                                           p.osVersion,
+                                                           p.year,
+                                                           p.powerConsumption,
+                                                           p.isCritical)
 {
 }
 
 /* Destructeur */
-Point::~Point()
+NetworkDevice::~NetworkDevice()
 {
 }
 
 /* Opérateur d'affectation */
-Point &Point::operator=(const Point &p)
+NetworkDevice &NetworkDevice::operator=(const NetworkDevice &nd)
 {
-    if (&p != this)
+    if (&nd != this)
     {
-        x = p.x;
-        y = p.y;
+        hostname = nd.hostname;
+        ipAdress = nd.ipAdress;
+        location = nd.location;
+        vendor = nd.vendor;
+        osVersion = nd.osVersion;
+        year = nd.year;
+        powerConsumption = nd.powerConsumption;
+        isCritical = nd.isCritical;
     }
     return *this;
 }
 
 /* Getters et Setters */
-int Point::getX() const
+std::string NetworkDevice::getHostname() const
 {
-    return x;
+    return hostname;
 }
 
-int Point::getY() const
+std::string NetworkDevice::getIpAdress() const
 {
-    return y;
+    return ipAdress;
 }
 
-void Point::setX(int _x)
+std::string NetworkDevice::getLocation() const
 {
-    x = _x;
+    return location;
 }
 
-void Point::setY(int _y)
+std::string NetworkDevice::getVendor() const
 {
-    y = _y;
+    return vendor;
 }
 
-void Point::translate(int dx, int dy)
+std::string NetworkDevice::getOsVersion() const
 {
-    x += dx;
-    y += dy;
+    return osVersion;
 }
 
-/* Surcharge de l'opérateur d'affichage */
-std::ostream &Point::PrintOn(std::ostream &os) const
+int NetworkDevice::getYear() const
 {
-    os << "Point(";
-    os << x << ", " << y << ")";
+    return year;
+}
+
+double NetworkDevice::getPowerConsumption() const
+{
+    return powerConsumption;
+}
+
+bool NetworkDevice::getIsCritical() const
+{
+    return isCritical;
+}
+
+void NetworkDevice::setHostname(const std::string &_hostname)
+{
+    hostname = _hostname;
+}
+
+void NetworkDevice::setIpAdress(const std::string &_ipAdress)
+{
+    ipAdress = _ipAdress;
+}
+
+void NetworkDevice::setLocation(const std::string &_location)
+{
+    location = _location;
+}
+
+void NetworkDevice::setVendor(const std::string &_vendor)
+{
+    vendor = _vendor;
+}
+
+void NetworkDevice::setOsVersion(const std::string &_osVersion)
+{
+    osVersion = _osVersion;
+}
+
+void NetworkDevice::setYear(int _year)
+{
+    year = _year;
+}
+
+void NetworkDevice::setPowerConsumption(double _powerConsumption)
+{
+    powerConsumption = _powerConsumption;
+}
+
+void NetworkDevice::setIsCritical(bool _isCritical)
+{
+    isCritical = _isCritical;
+}
+
+void NetworkDevice::ping() const
+{
+    std::cout << "Pinging " << ipAdress;
+    std::cout << "..." << std::endl;
+
+    // test ici
+    std::cout << "Reply from " << ipAdress;
+    std::cout << ": bytes=32 time=20ms TTL=64";
+    std::cout << std::endl;
+}
+
+std::ostream &NetworkDevice::printInfo(std::ostream &os) const
+{
+    os << "NetworkDevice(";
+    os << hostname << ", ";
+    os << ipAdress << ", ";
+    os << location << ", ";
+    os << vendor << ", ";
+    os << osVersion << ", ";
+    os << year << ", ";
+    os << powerConsumption << ", ";
+    os << isCritical << ")";
+    os << std::endl;
     return os;
 }
