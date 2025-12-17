@@ -40,6 +40,7 @@ public:
 
     virtual void ping() const;
     virtual std::ostream &printInfo(std::ostream &) const;
+    virtual std::ostream &PrintOn(std::ostream &) const override;
 
 protected:
     std::string hostname;

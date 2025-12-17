@@ -64,3 +64,8 @@ std::ostream &Router::printInfo(std::ostream &os) const
     os << std::endl;
     return os;
 }
+
+std::ostream &Router::PrintOn(std::ostream &os) const
+{
+    return printInfo(os);
+}

@@ -64,3 +64,8 @@ std::ostream &Switch::printInfo(std::ostream &os) const
     os << std::endl;
     return os;
 }
+
+std::ostream &Switch::PrintOn(std::ostream &os) const
+{
+    return printInfo(os);
+}

@@ -18,6 +18,7 @@ public:
 
     /* Override car ancêtre */
     virtual std::ostream &printInfo(std::ostream &) const override;
+    virtual std::ostream &PrintOn(std::ostream &) const override;
 
 private:
     int cpuCores; // nombre de cœurs CPU

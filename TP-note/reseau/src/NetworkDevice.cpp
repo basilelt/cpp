@@ -76,7 +76,7 @@ std::string NetworkDevice::getHostname() const
     return hostname;
 }
 
-std::string NetworkDevice::getIpAddress() const
+std::string NetworkDevice::getIpAdress() const
 {
     return ipAddress;
 }
@@ -174,4 +174,9 @@ std::ostream &NetworkDevice::printInfo(std::ostream &os) const
     os << "Power Consumption: " << powerConsumption << " W" << std::endl;
     os << std::endl;
     return os;
+}
+
+std::ostream &NetworkDevice::PrintOn(std::ostream &os) const
+{
+    return printInfo(os);
 }
