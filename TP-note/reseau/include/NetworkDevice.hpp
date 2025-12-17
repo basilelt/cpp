@@ -38,13 +38,12 @@ public:
     virtual void setPowerConsumption(double);
     virtual void setIsCritical(bool);
 
-    void ping() const;
-
+    virtual void ping() const;
     virtual std::ostream &printInfo(std::ostream &) const;
 
-private:
+protected:
     std::string hostname;
-    std::string ipAdress;
+    std::string ipAddress;
     std::string location;
     std::string vendor;
     std::string osVersion;

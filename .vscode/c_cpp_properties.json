@@ -5,7 +5,10 @@
       "includePath": [
         "${workspaceFolder}/**/src",
         "${workspaceFolder}/**/include",
-        "${workspaceFolder}/TP1/pokemon/include"
+        "${workspaceFolder}/TP1/pokemon/include",
+        "${workspaceFolder}/TP2/knn/include",
+        "${workspaceFolder}/TP-note/reseau/include"
+
       ],
       "defines": [],
       "compilerPath": "/usr/bin/g++",
