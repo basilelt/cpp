@@ -52,12 +52,12 @@ NetworkInfrastructure &NetworkInfrastructure::operator=(const NetworkInfrastruct
 
 void NetworkInfrastructure::sortAndUniqueDevices()
 {
-    // Remove duplicates based on hostname
+    // Supprimer les doublons basés sur le nom d'hôte
     std::set<std::string> hostnames;
     auto it = devices.begin();
     while (it != devices.end())
     {
-        // If hostname already exists, remove the device
+        // Si le nom d'hôte existe déjà, supprimer l'appareil
         if (hostnames.count((*it)->getHostname()))
         {
             it = devices.erase(it);
@@ -68,7 +68,7 @@ void NetworkInfrastructure::sortAndUniqueDevices()
             ++it;
         }
     }
-    // Sort by hostname
+    // Trier par nom d'hôte
     std::sort(devices.begin(), devices.end(),
               [](NetworkDevice *a, NetworkDevice *b)
               { return a->getHostname() < b->getHostname(); });
@@ -109,7 +109,7 @@ void NetworkInfrastructure::setDevices(const std::vector<NetworkDevice *> &_devi
 void NetworkInfrastructure::listDevices() const
 {
     std::cout << "Devices in infrastructure " << name << ":" << std::endl;
-    // List all devices, auto type deduction
+    // Lister tous les appareils, déduction automatique du type
     for (const auto *device : devices)
     {
         std::cout << "- " << device->getHostname() << std::endl;
@@ -118,14 +118,14 @@ void NetworkInfrastructure::listDevices() const
 
 void NetworkInfrastructure::addDevice(NetworkDevice *device)
 {
-    // Check capacity and uniqueness
+    // Vérifier la capacité et l'unicité
     if (devices.size() >= static_cast<size_t>(maxDevices))
         return;
-    // Check for uniqueness
+    // Vérifier l'unicité
     auto it = std::find_if(devices.begin(), devices.end(),
                            [device](NetworkDevice *d)
                            { return d->getHostname() == device->getHostname(); });
-    // If not found, add the device
+    // Si non trouvé, ajouter l'appareil
     if (it == devices.end())
     {
         devices.push_back(device);
@@ -135,7 +135,7 @@ void NetworkInfrastructure::addDevice(NetworkDevice *device)
 
 void NetworkInfrastructure::searchDeviceByHostname(const std::string &hostname) const
 {
-    // Binary search comme en TD = O(log n)
+    // Recherche binaire comme en TD = O(log n)
     int left = 0;
     int right = devices.size() - 1;
 
@@ -156,7 +156,7 @@ void NetworkInfrastructure::searchDeviceByHostname(const std::string &hostname) 
         {
             left = mid + 1;
         }
-        // midHostname > hostname
+        // nom d'hôte milieu > nom d'hôte
         else
         {
             right = mid - 1;
@@ -167,11 +167,11 @@ void NetworkInfrastructure::searchDeviceByHostname(const std::string &hostname) 
 
 void NetworkInfrastructure::removeDeviceByHostname(const std::string &hostname)
 {
-    // Linear search to find and remove the device
+    // Recherche linéaire pour trouver et supprimer l'appareil
     auto it = std::find_if(devices.begin(), devices.end(),
                            [&hostname](NetworkDevice *d)
                            { return d->getHostname() == hostname; });
-    // If found, erase it
+    // Si trouvé, l'effacer
     if (it != devices.end())
     {
         devices.erase(it);
@@ -184,7 +184,7 @@ void NetworkInfrastructure::averagePowerConsumptionByType() const
     for (const auto *device : devices)
     {
         std::string type;
-        // Determine device type using dynamic_cast
+        // Déterminer le type d'appareil en utilisant dynamic_cast
         if (dynamic_cast<const Router *>(device))
             type = "Router";
         else if (dynamic_cast<const Switch *>(device))
@@ -194,7 +194,7 @@ void NetworkInfrastructure::averagePowerConsumptionByType() const
         else
             type = "Unknown";
 
-        // Accumulate power consumption and count
+        // Accumuler la consommation d'énergie et compter
         typeStats[type].first += device->getPowerConsumption();
         typeStats[type].second++;
     }
