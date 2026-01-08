@@ -122,6 +122,9 @@ void NetworkInfrastructure::addDevice(NetworkDevice *device)
     if (devices.size() >= static_cast<size_t>(maxDevices))
         return;
     // Vérifier l'unicité
+    // Lambda pour comparer les noms d'hôte
+    // Capturer device par valeur
+    // puis pour chaque d dans devices, comparer les noms d'hôte
     auto it = std::find_if(devices.begin(), devices.end(),
                            [device](NetworkDevice *d)
                            { return d->getHostname() == device->getHostname(); });
