@@ -121,7 +121,6 @@ void NetworkInfrastructure::addDevice(NetworkDevice *device)
     // Vérifier la capacité et l'unicité
     if (devices.size() >= static_cast<size_t>(maxDevices))
         return;
-    // Vérifier l'unicité
     // Lambda pour comparer les noms d'hôte
     // Capturer device par valeur
     // puis pour chaque d dans devices, comparer les noms d'hôte
